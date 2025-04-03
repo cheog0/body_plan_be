@@ -6,7 +6,7 @@ COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 
 # 3️⃣ Gradle 빌드 실행 (테스트 제외)
-RUN gradle build --no-daemon
+RUN gradle build --no-daemon -x test
 
 # 4️⃣ 실행 단계: 빌드된 JAR 파일을 실행할 경량 JDK 이미지 사용
 FROM eclipse-temurin:17-jdk

@@ -14,4 +14,7 @@ public class RegisterRequestDto {
     private String email;
     private String phoneNumber;
     private String address;
+    private String nickname;
+    private Double height;
+    private Double weight;
 }

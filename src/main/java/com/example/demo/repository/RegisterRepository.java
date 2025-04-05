@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface RegisterRepository extends JpaRepository<Register, Long> {
     Optional<Register> findByUserid(String userid);
+    boolean existsByNickname(String nickname); // ✔ 닉네임 중복 체크
 }

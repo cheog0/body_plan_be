@@ -11,43 +11,53 @@ import lombok.Setter;
 @Setter
 @Table(name = "users")
 @NoArgsConstructor
-public class Register {  // Login 대신 User 사용
+public class Register {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "userid", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String userid;
 
-    @Column(name = "password", nullable = false, length = 500)
+    @Column(nullable = false, length = 500)
     private String password;
 
-    @Column(name = "name", nullable = false)
+    @Column(nullable = false)
     private String name;
 
-    @Column(name = "gender", nullable = false)
+    @Column(nullable = false)
     private String gender;
 
-    @Column(name = "birth_date", nullable = false)
+    @Column(nullable = false)
     private String birthDate;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(name = "phone_number", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
 
-    @Column(name = "address", nullable = false)
+    @Column(nullable = false)
     private String address;
 
-    public Register(RegisterRequestDto requestDto) {
-        this.userid = requestDto.getUserid();
-        this.password = requestDto.getPassword();
-        this.name = requestDto.getName();
-        this.gender = requestDto.getGender();
-        this.birthDate = requestDto.getBirthDate();
-        this.email = requestDto.getEmail();
-        this.phoneNumber = requestDto.getPhoneNumber();
-        this.address = requestDto.getAddress();
+    @Column(nullable = false, unique = true)
+    private String nickname;
+
+    private Double height;
+    private Double weight;
+
+    public Register(RegisterRequestDto dto) {
+        this.userid = dto.getUserid();
+        this.password = dto.getPassword();
+        this.name = dto.getName();
+        this.gender = dto.getGender();
+        this.birthDate = dto.getBirthDate();
+        this.email = dto.getEmail();
+        this.phoneNumber = dto.getPhoneNumber();
+        this.address = dto.getAddress();
+        this.nickname = dto.getNickname();
+        this.height = dto.getHeight();
+        this.weight = dto.getWeight();
     }
 }

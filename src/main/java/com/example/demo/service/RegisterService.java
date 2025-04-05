@@ -17,15 +17,17 @@ public class RegisterService {
         this.registerRepository = registerRepository;
     }
 
-    public boolean register(RegisterRequestDto registerRequestDto) {
-        Optional<Register> existingUser = registerRepository.findByUserid(registerRequestDto.getUserid());
-
+    public boolean register(RegisterRequestDto dto) {
+        Optional<Register> existingUser = registerRepository.findByUserid(dto.getUserid());
         if (existingUser.isPresent()) {
-            return false; // 이미 존재하는 아이디
+            return false;
         }
-
-        Register newUser = new Register(registerRequestDto);
+        Register newUser = new Register(dto);
         registerRepository.save(newUser);
         return true;
+    }
+
+    public boolean existsByNickname(String nickname) {
+        return registerRepository.existsByNickname(nickname);
     }
 }

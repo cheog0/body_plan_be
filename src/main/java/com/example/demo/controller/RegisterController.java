@@ -18,12 +18,21 @@ public class RegisterController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterRequestDto registerRequestDto) {
-        boolean isRegistered = registerService.register(registerRequestDto);
-
-        if (isRegistered) {
-            return ResponseEntity.ok("회원가입 성공!");
-        } else {
-            return ResponseEntity.badRequest().body("이미 존재하는 아이디입니다.");
+        try {
+            boolean isRegistered = registerService.register(registerRequestDto);
+            if (isRegistered) {
+                return ResponseEntity.ok("회원가입 성공!");
+            } else {
+                return ResponseEntity.badRequest().body("이미 존재하는 아이디입니다.");
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @GetMapping("/check-nickname")
+    public ResponseEntity<Boolean> checkNickname(@RequestParam String nickname) {
+        boolean exists = registerService.existsByNickname(nickname);
+        return ResponseEntity.ok(exists); // ✔ boolean 리턴
     }
 }

@@ -33,6 +33,6 @@ public class RegisterController {
     @GetMapping("/check-nickname")
     public ResponseEntity<Boolean> checkNickname(@RequestParam String nickname) {
         boolean exists = registerService.existsByNickname(nickname);
-        return ResponseEntity.ok(exists); // ✔ boolean 리턴
+        return ResponseEntity.ok(exists);
     }
 }

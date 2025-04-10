@@ -6,15 +6,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RegisterRequestDto {
-    private String userid;
+    private String userid; // 이메일 형식
     private String password;
-    private String name;
-    private String gender;
-    private String birthDate;
-    private String email;
-    private String phoneNumber;
-    private String address;
     private String nickname;
     private Double height;
     private Double weight;
+    private String gender;
+    private String birthDate;
 }

@@ -18,28 +18,10 @@ public class Register {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String userid;
+    private String userid; // 이메일 형식
 
     @Column(nullable = false, length = 500)
     private String password;
-
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
-    private String gender;
-
-    @Column(nullable = false)
-    private String birthDate;
-
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    @Column(nullable = false, unique = true)
-    private String phoneNumber;
-
-    @Column(nullable = false)
-    private String address;
 
     @Column(nullable = false, unique = true)
     private String nickname;
@@ -47,17 +29,19 @@ public class Register {
     private Double height;
     private Double weight;
 
+    @Column(nullable = false)
+    private String gender;
+
+    @Column(nullable = false)
+    private String birthDate;
+
     public Register(RegisterRequestDto dto) {
         this.userid = dto.getUserid();
         this.password = dto.getPassword();
-        this.name = dto.getName();
-        this.gender = dto.getGender();
-        this.birthDate = dto.getBirthDate();
-        this.email = dto.getEmail();
-        this.phoneNumber = dto.getPhoneNumber();
-        this.address = dto.getAddress();
         this.nickname = dto.getNickname();
         this.height = dto.getHeight();
         this.weight = dto.getWeight();
+        this.gender = dto.getGender();
+        this.birthDate = dto.getBirthDate();
     }
 }

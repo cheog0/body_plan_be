@@ -36,9 +36,11 @@ public class JwtUtil {
                     .build()
                     .parseClaimsJws(token)
                     .getBody()
-                    .getSubject(); // 사용자 ID 반환
+                    .getSubject();
         } catch (JwtException e) {
-            return null; // 유효하지 않으면 null 반환
+            System.out.println("❌ 토큰 검증 실패: " + e.getMessage());
+            return null;
         }
     }
+
 }
